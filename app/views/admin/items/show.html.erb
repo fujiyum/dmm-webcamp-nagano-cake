@@ -5,5 +5,5 @@
   <p>ジャンル<%= @item.genre.name %></p>
   <p>税込価格<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円</p>
   <p>販売ステータス<%= @item.is_active %></p>
-  <%= link_to '編集する', edit_admin_item_path %>
+  <%= link_to '編集する', edit_admin_item_path(@item.id) %>
 </div>
