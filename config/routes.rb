@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :customers
   devise_for :admins, skip: :sessions
   devise_scope :admin do
     get "/admin/sign_in", to: "devise/sessions#new", as: :new_admin_session
@@ -9,6 +10,5 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
   end
-  devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
