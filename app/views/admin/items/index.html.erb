@@ -1,10 +1,14 @@
- <table>
-    <thead>
+<div class="container mt-3">
+ <div class="row">
+  <div class="pull-left"><h4>商品一覧</h4></div>
+  <table class="table table-hove">
+    <thead class="table-info">
      <tr>
          <th>商品ID</th>
          <th>商品名</th>
          <th>税抜価格</th>
          <th>ジャンル</th>
+         <th>ステータス</th>
      </tr>
     </thead>
     <tbody>
@@ -18,7 +22,10 @@
          </td>
          <td><%= item.price %></td>
          <td><%= item.genre.name %></td>
+         <td><%= item.is_active %></td>
      </tr>
     <% end %>
     </tboby>
  </table>
+</div>
+</div>
