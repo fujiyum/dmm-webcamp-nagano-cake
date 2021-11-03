@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model:@customer, local:true do |f| %>
+    <%= f.text_field :last_name %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :last_name_kana %>
+    <%= f.text_field :first_name_kana %>
+    <%= f.text_field :postale_code %>
+    <%= f.text_field :address %>
+    <%= f.text_field :telephone_number %>
+    <%= f.text_field :email %>
+    <label><%= f.radio_button :is_active, true %>有効</label>
+    <label><%= f.radio_button :is_active, false %>退会</label>
+    <%= f.submit "変更を保存" %>
+    <% end %>
+ </div>
+</div>

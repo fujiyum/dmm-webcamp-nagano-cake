@@ -1,18 +1,40 @@
-<h2>商品新規登録</h2>
-<%= form_with model:@item, url:admin_items_path, local:true do |f| %>
-<p>商品画像</p>
-<%= f.attachment_field :image %>
-<p>商品名</p>
-<%= f.text_field :name %>
-<p>商品説明</p>
-<%= f.text_area :introduction %>
-<p>ジャンル</p>
-<%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択して下さい" %>
-<p>税抜価格</p>
-<%= f.text_field :price %>円
-<p>販売ステータス</p>
-<label><%= f.radio_button :is_active, true %>販売中</label>
-<label><%= f.radio_button :is_active, false %>販売停止中</label>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h4>商品新規登録</h4>
+      <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
+      <div class="form-grouop mb-3">
+        <label for="item_image" class="form-label">商品画像</label>
+        <div><%= f.attachment_field :image %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="item_name" class="for-label">商品名</label>
+        <div><%= f.text_field :name, class:'form-control' %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="item_introduction" class="for-label">商品説明</label>
+        <div><%= f.text_area :introduction, class:'form-control' %></div>
+      </div>
+      <div class="from-grouop mb-3">
+        <label for="item_genre" class="for-label">ジャンル</label>
+        <div><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択して下さい" %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="item_price" class="for-label">税抜価格</label>
+        <div><%= f.text_field :price %> 円</div>
+      </div>
+      <div class="from-grouop mb-3">
+        <label for="item_name" class="for-label">販売ステータス</label>
+       <div>
+        <label><%= f.radio_button :is_active, true %>販売中</label>
 
-<%= f.submit '新規登録' %>
-<% end %>
+        <label><%= f.radio_button :is_active, false %>販売停止中</label>
+       </div>
+      </div>
+      <div class="form-grouop mb-3">
+      <%= f.submit '新規登録', class:'btn btn-success' %>
+      </div>
+     <% end %>
+    </div>
+ </div>
+</div>
