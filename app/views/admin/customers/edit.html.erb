@@ -1,17 +1,49 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <%= form_with model:@customer, local:true do |f| %>
-    <%= f.text_field :last_name %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name_kana %>
-    <%= f.text_field :first_name_kana %>
-    <%= f.text_field :postale_code %>
-    <%= f.text_field :address %>
-    <%= f.text_field :telephone_number %>
-    <%= f.text_field :email %>
-    <label><%= f.radio_button :is_active, true %>有効</label>
-    <label><%= f.radio_button :is_active, false %>退会</label>
-    <%= f.submit "変更を保存" %>
-    <% end %>
- </div>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+     <h4>商品編集</h4>
+     <%= form_with model:@customer, local:true do |f| %>
+      <div class="form-grouop mb-3">
+        <label for="id" class="form-label">会員ID</label>
+        <%= @customer.id %>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="name" class="form-label">氏名</label>
+        <div>
+         <%= f.text_field :last_name, class:'form-control' %>
+         <%= f.text_field :first_name, class:'form-control' %>
+        </div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="name_kana" class="for-label">フリガナ</label>
+        <div>
+         <%= f.text_field :last_name_kana, class:'form-control' %>
+         <%= f.text_field :first_name_kana, class:'form-control' %>
+        </div>
+      </div>
+      <div class="from-grouop mb-3">
+        <label for="postale_code" class="for-label">郵便番号</label>
+        <div><%= f.text_field :postale_code, class:'form-control' %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="address" class="for-label">住所</label>
+        <div><%= f.text_field :address, class:'form-control' %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="telephone_number" class="for-label">電話番号</label>
+        <div><%= f.text_field :telephone_number, class:'form-control' %></div>
+      </div>
+      <div class="form-grouop mb-3">
+        <label for="email" class="for-label">メールアドレス</label>
+        <div><%= f.text_field :email, class:'form-control' %></div>
+      </div>
+      <div>
+        <p>会員ステータス</p>
+        <label><%= f.radio_button :is_active, true %>有効</label>
+        <label><%= f.radio_button :is_active, false %>退会</label>
+      </div>
+      <%= f.submit '変更を保存', class:'btn btn-success' %>
+     <% end %>
+    </div>
+  </div>
 </div>
