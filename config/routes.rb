@@ -7,10 +7,12 @@ Rails.application.routes.draw do
     delete "/admin/sion_out", to: "devise/sessions#destroy", as: :destroy_admin_session
   end
   namespace :admin do
+    get "/", to: "admin/homes#top", as: :admin
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
