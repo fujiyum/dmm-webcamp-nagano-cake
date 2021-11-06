@@ -1,11 +1,11 @@
 <div class="row" style="width:60%; margin:0 auto;">
-<%= form_for(@order, url:admins_order_path(@order), method: :patch) do |f| %>
+<%= form_with model:@order, url:admin_order_detail_path(@order.id), method: :patch do |f| %>
 <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文詳細画面</h4>
 
 	<table class="table table-bordered">
 		<tr>
 			<th>購入者</th>
-			<td><%= link_to  admins_customer_path(@order.id) do %>
+			<td><%= link_to  admin_customer_path(@order.id) do %>
 					<%= @order.customer.full_name %>
 					<% end %>
 			</td>
@@ -15,7 +15,7 @@
 			<td><%= @order.postal_code %>
 					<%= @order.address %>
 					<br>
-					<%= @order.full_name %>
+					<%= @order.name %>
 			</td>
 		</tr>
 		<tr>
