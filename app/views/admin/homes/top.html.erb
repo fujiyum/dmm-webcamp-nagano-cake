@@ -14,13 +14,13 @@
     <% @order.each do |order| %>
      <tr>
          <td>
-           <%= link_to admin_item_path(item.id) do %>
-           <%= order.created_at %>
+           <%= link_to admin_order_path(order.id) do %>
+           <%= instances.order.created_at %>
            <% end %>
          </td>
-         <td><%= order.name %></td>
-         <td><%= order. %></td>
-         <td><%= order.status %></td>
+         <td><%= instances.customer.name %></td>
+         <td><%= instances.quantity %></td>
+         <td><%= instances.status %></td>
      </tr>
     <% end %>
     </tboby>
