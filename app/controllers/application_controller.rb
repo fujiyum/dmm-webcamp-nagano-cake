@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_path          #注文履歴一覧画面
     when Customer
-      root_path              #トップページ
+      homes_path              #トップページ
     end
   end
 
