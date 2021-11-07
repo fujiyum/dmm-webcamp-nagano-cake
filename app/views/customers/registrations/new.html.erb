@@ -5,39 +5,39 @@
     <%= form_with model: @customer, url: customer_registration_path, id:'new_customer', class:'new_customer', local: true do |f| %>
     <%= render "customers/shared/error_messages", resource: resource %>
 
-     <div class="from-group">
+     <div class="form-group">
        <%= f.label :'名前' %>
        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'フリガナ' %>
       <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
       <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'メールアドレス' %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'郵便番号' %>
       <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'住所' %>
       <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'電話番号' %>
       <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'パスワード' %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>文字以上)</em>
@@ -45,7 +45,7 @@
       <%= f.password_field :password, autocomplete: "new-password" %>
      </div>
 
-     <div class="from-group">
+     <div class="form-group">
       <%= f.label :'パスワード(確認用)' %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
      </div>

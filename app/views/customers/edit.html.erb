@@ -1,35 +1,61 @@
-<h2>プロフィール編集</h2>
-<%= form_with model: @customer, local: true do |f| %>
-     <div class="from-group">
-       <%= f.label :'名前' %>
-       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-     </div>
+<div class="container mt-3">
+ <div class="row">
+   <div class="col mx-auto text-center">
+    <h2 class="mb-5">プロフィール編集</h2>
+    <%= form_with model: @customer, local: true do |f| %>
+      <form>
+      <div class="form-row">
+           <label class="col-form-label">姓</label>
+           <div class="col">
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:'form-control' %>
+     　     </div>
+        　 <label class="col-form-label">名</label>
+        　 <div class="col">
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:'form-control' %>
+           </div>
+      </div>
 
-     <div class="from-group">
-      <%= f.label :'フリガナ' %>
-      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-     </div>
+       <div class="form-row">
+           <label class="col-form-label">セイ</label>
+           <div class="col">
+            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class:'form-control' %>
+     　     </div>
+        　 <label class="col-form-label">メイ</label>
+        　 <div class="col">
+            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class:'form-control' %>
+           </div>
+        </div>
 
-     <div class="from-group">
-      <%= f.label :'メールアドレス' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-     </div>
+       <div class="form-group row">
+         <label class="col-sm-4 col-md-4 col-lg-4 col-form-label">メールアドレス</label>
+         <div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
+         </div>
+       </div>
 
-     <div class="from-group">
-      <%= f.label :'郵便番号' %>
-      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-     </div>
+       <div class="form-group row">
+         <label class="col-sm-4 col-md-4 col-lg-4 col-form-label">郵便番号</label>
+         <div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+         <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:'form-control' %>
+         </div>
+       </div>
 
-     <div class="from-group">
-      <%= f.label :'住所' %>
-      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-     </div>
+       <div class="form-group row">
+         <label class="col-sm-4 col-md-4 col-lg-4 col-form-label">住所</label>
+         <div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+         <%= f.text_field :address, autofocus: true, autocomplete: "address", class:'form-control' %>
+         </div>
+       </div>
 
-     <div class="from-group">
-      <%= f.label :'電話番号' %>
-      <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
-     </div>
-  <%= f.submit "変更を保存" %>
-<% end %>
+       <div class="form-group row">
+         <label class="col-sm-4 col-md-4 col-lg-4 col-form-label">電話番号</label>
+         <div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+         <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class:'form-control' %>
+         </div>
+       </div>
+       <%= f.submit "変更を保存", class:'btn btn-success' %>
+      </form>
+     <% end %>
+    </div>
+  </div>
+</div>
