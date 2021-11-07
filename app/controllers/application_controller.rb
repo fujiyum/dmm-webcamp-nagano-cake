@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     when Admin
       new_admin_session_path #管理者ログイン画面
     when Customer
-      root_path              #トップページ
+      new_customer_sesion_path    #トップページ
     end
   end
 
