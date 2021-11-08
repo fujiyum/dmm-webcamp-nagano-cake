@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'customers/show'
-  get 'customers/edit'
-  get 'customers/update'
-  get 'customers/unsubscribe'
-  get 'customers/withdraw'
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     passwords: 'customers/passwords',
@@ -24,9 +19,9 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
   get '/' => 'homes#top', as: :homes
-  get '/about' => 'homes#about'
+  get '/about' => 'homes#about', as: :about
+  get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: :unsubscribe
+  patch '/customers/:id/withdraw' => 'customers#withdraw', as: :withdraw
   resources :customers, only: [:show, :edit, :update]
-  get 'customers/unsubscribe' => 'customers#unsubscribe'
-  patch 'customers/withdraw' => 'customers#withdraw'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

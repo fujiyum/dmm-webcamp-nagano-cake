@@ -54,6 +54,7 @@
          </div>
        </div>
        <%= f.submit "変更を保存", class:'btn btn-success' %>
+       <%= link_to '退会する',  unsubscribe_path(@customer.id), class:'btn btn-danger' %>
       </form>
      <% end %>
     </div>
