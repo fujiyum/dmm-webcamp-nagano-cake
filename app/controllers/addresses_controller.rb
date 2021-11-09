@@ -1,4 +1,7 @@
 class AddressesController < ApplicationController
+  before_action :authenticate_custmer! #URLの直打ち禁止
+  before_action :correct_address,only: [:index, :edit]
+
   def index
     @address = Address.new
     @addresses = Address.all
@@ -21,6 +24,14 @@ class AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
+  end
+
+　#URLの直打ち禁止
+  def correct_address
+       @address = Address.find(params[:id])
+    unless @address.customer.id == current_customer.id
+      redirect_to homes_path
+    end
   end
 
   private

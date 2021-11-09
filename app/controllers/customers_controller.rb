@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(is_active: false)
     reset_session
-    redirect_to customer_path(@customer.id)
+    redirect_to homes_path
   end
 
   private
