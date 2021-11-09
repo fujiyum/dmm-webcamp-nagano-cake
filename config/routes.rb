@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: :unsubscribe
   patch '/customers/:id/withdraw' => 'customers#withdraw', as: :withdraw
   resources :customers, only: [:show, :edit, :update]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
