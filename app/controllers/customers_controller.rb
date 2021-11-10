@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer! #URLの直打ち禁止
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -19,8 +21,9 @@ class CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(params[:id])
-    @customer.update(is_active: false)
+    @customer.update(is_active: false) #false=退会に変更する
     reset_session
+    flash[:notice] = "ありがとうございました。またのご利用お待ちしております。"
     redirect_to homes_path
   end
 

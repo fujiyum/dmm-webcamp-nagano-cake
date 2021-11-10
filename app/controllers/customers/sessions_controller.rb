@@ -31,7 +31,7 @@ class Customers::SessionsController < Devise::SessionsController
 
    protected
 
-    def reject_customer
+    def reject_customer #退会後の同じ登録を阻止
       @customer = Customer.find(params[:id])
        if @customer
         if @customer.vaild_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true)

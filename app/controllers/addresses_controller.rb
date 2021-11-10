@@ -1,6 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :authenticate_custmer! #URLの直打ち禁止
-  before_action :correct_address,only: [:index, :edit]
+  before_action :authenticate_customer! #URLの直打ち禁止
 
   def index
     @address = Address.new
@@ -8,8 +7,10 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.find(params[:id])
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
     @address.save
+    redirect_to addresses_path
   end
 
   def edit
@@ -18,7 +19,8 @@ class AddressesController < ApplicationController
 
   def update
     address = Address.find(params[:id])
-    address.update
+    address.update(address_params)
+    redirect_to addresses_path
   end
 
   def destroy
@@ -26,18 +28,10 @@ class AddressesController < ApplicationController
     @address.destroy
   end
 
-　#URLの直打ち禁止
-  def correct_address
-       @address = Address.find(params[:id])
-    unless @address.customer.id == current_customer.id
-      redirect_to homes_path
-    end
-  end
-
   private
 
   def address_params
-    params.require(:address).permit(:customer_id, :name, :postal_code, :address)
+    params.require(:address).permit(:name, :postal_code, :address)
   end
 
 end

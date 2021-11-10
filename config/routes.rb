@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   patch '/customers/:id/withdraw' => 'customers#withdraw', as: :withdraw
   resources :customers, only: [:show, :edit, :update]
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :items, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

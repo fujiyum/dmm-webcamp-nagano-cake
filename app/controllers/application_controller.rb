@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   def after_sign_in_path_for(resource)
     case resource
     when Admin
@@ -16,6 +17,5 @@ class ApplicationController < ActionController::Base
       new_customer_sesion_path    #トップページ
     end
   end
-
 
 end

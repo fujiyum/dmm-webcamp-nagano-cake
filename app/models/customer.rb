@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
     self.last_name_kana + self.first_name_kana
   end
 
-  def active_for_authentication?
+  def active_for_authentication? #退会済み顧客が同じアカウントでログインできないようにする
     super && (is_active == true)
   end
 end
