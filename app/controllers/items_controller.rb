@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).premit(:name, :image, :price)
+    params.require(:item).premit(:name, :image, :introduction, :price)
   end
 
 end
