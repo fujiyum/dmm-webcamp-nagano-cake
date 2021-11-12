@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   resources :customers, only: [:show, :edit, :update]
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  delete '/cart_items/enpty' => 'cart_items#enpty', as: :cart_items_enpty
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
