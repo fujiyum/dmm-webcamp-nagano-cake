@@ -6,12 +6,14 @@
    <div class="col">
      <div><%= @item.name %></div>
      <div><%= @item.introduction %></div>
-     <div>￥<%= @item.add_tax_price.to_s(:dalimited) %></div>
+     <div>￥<%= @item.with_tax_price.to_s(:dalimited) %></div>
    </div>
-  <%= form_with model: @cart_item, url:'/cart_items', local :true do |f| %>
-     <%= f.hidden_field :item_id, value: @item.id %>
-     <%= f.select :amount, *[1..10] %>
-     <%= f.submit "カートに入れる", class:'btn btn-primary' %>
-   <% end %>
+   <div>
+     <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+       <%= f.hidden_field :item_id, value: @item.id %>
+       <%= f.select :amount, *[1..10] %>
+       <%= f.submit "カートに入れる", class:'btn btn-primary' %>
+     <% end %>
+   </div>
   </div>
 </div>
