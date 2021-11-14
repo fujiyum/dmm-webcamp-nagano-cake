@@ -26,8 +26,10 @@
       <div class="from-grouop mb-3">
         <label for="item_name" class="for-label">販売ステータス</label>
        <div>
-        <label><%= f.radio_button :is_active, {販売中:true} %>販売中</label>
-        <label><%= f.radio_button :is_active, {販売停止中:false} %>販売停止中</label>
+        <%= f.radio_button :is_active, "true" %>
+        <%= f.label :is_active, "販売中" %>
+        <%= f.radio_button :is_active, "false" %>
+        <%= f.label :is_active, "販売停止中" %>
        </div>
       </div>
       <div class="form-grouop mb-3">

@@ -16,7 +16,10 @@ class Customer < ApplicationRecord
     self.last_name_kana + self.first_name_kana
   end
 
+  enum is_active: {"有効": true, "退会": false}
+
   def active_for_authentication? #退会済み顧客が同じアカウントでログインできないようにする
     super && (is_active == true)
   end
+
 end
