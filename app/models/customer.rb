@@ -19,7 +19,7 @@ class Customer < ApplicationRecord
   enum is_active: {"有効": true, "退会": false}
 
   def active_for_authentication? #退会済み顧客が同じアカウントでログインできないようにする
-    super && (is_active == true)
+    super && (is_active == "有効")
   end
 
 end

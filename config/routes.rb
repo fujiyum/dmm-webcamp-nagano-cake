@@ -26,11 +26,11 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
-   delete '/cart_items/enpty' => 'cart_items#enpty', as: :enpty
+   delete '/enpty' => 'cart_items#enpty', as: :enpty
  end
  resources :orders, only: [:new, :create, :index, :show] do
-   post '/orders/confirm' => 'orders#confirm', as: :confirm
-   get '/orders/thanks' => 'orders#thanks', as: :thanks
+   post '/confirm' => 'orders#confirm', as: :confirm
+   get '/thanks' => 'orders#thanks', as: :thanks
  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
