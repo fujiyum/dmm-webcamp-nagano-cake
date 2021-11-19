@@ -4,7 +4,8 @@
      <h4>注文情報確認</h4>
     </div>
   </div>
-  <div class="row table">
+  <div class="row">
+   <div class="col">
     <table class="table table-hove mt-3">
       <thead class="table-warning bg-opacity-10">
        <tr>
@@ -23,40 +24,42 @@
           <td><%= cart_item.item.with_tax_price %></td>
           <td><%= cart_item.amount %></td>
           <td><%=  cart_item.subtotal %></td>
-          <td><%= link_to '削除する', cart_item_path(cart_item), method: :delete, class:'btn btn-danger' %>
           <% @total_price += cart_item.subtotal %>
          </tr>
         <% end %>
       </tbody>
     </table>
+   </div>
   </div>
-  <table>
-    <tbody>
-      <tr>
-        <th>送料</th><td><%= @order.postage_method %></td>
-        <th>商品合計</th><td><%= @total_price %></td>
-        <th>請求金額</th><td><%= @order.postage_method*@total_price %></td>
-      </tr>
-    </tbody>
-  <table>
-  <div class="row">
+   <div class="col">
+     <table class="table table-hove mt-3">
+       <tbody>
+         <tr>
+           <th>送料</th><td><%= @order.postage_method %></td>
+           <th>商品合計</th><td><%= @total_price %></td>
+           <th>請求金額</th><td><%= @order.postage_method.to_i + @total_price.to_i %></td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <div class="row">
     <div class="col">
       <p><strong>支払方法</strong><%= @order.payment %><p>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <p><strong>お届け先</strong><%= @order.full_address %><p>
-    </div>
-  </div>
-  <div class="row next-btn">
-   <div class="col text-center">
-    <%= form_with model: @order, url: orders_path, local: true do |f| %>
-      <% f.hidden_field :total_price%>
-      <% f.hidden_field :payment %>
-      <% f.hidden_field :full_address %>
-      <%= f.submit '情報入力に進む', class:'btn btn-success' %>
-    <% end %>
    </div>
-  </div>
+   <div class="row">
+    <div class="col">
+      <p><strong>お届け先</strong><%= @order.address %><p>
+    </div>
+   </div>
+   <div class="row next-btn">
+    <div class="col text-center">
+     <%= form_with model: @order, url: orders_path, local: true do |f| %>
+       <% f.hidden_field :total_price%>
+       <% f.hidden_field :payment %>
+       <% f.hidden_field :full_address %>
+       <%= f.submit '注文を確定', class:'btn btn-success' %>
+     <% end %>
+    </div>
+   </div>
 </div>

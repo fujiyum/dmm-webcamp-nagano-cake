@@ -5,7 +5,7 @@
 　　　<div class="card-img-overlay text-center text-light">
 　　　  <p class="main-text">
 　　　  小さな町のレトロなお店。</br>
-　　　  創業より変わらないチーズケーキは、</br>
+　　　  創業より変わらないケーキは、</br>
 　　　  地元の皆様に愛され続けております。</br>
 　　　  ちょっと懐かしい味を全国の皆様にもぜひ。</br>
 　　　  会員登録ののち、ご注文お待ちしております。</p>
@@ -16,8 +16,12 @@
   <div class="row">
     <% @item.each do |item| %>
     <div class="col mx-auto">
-         <div><%= attachment_image_tag item, :image %></div>
-         <div><%= item.name %></div>
+         <div><%= attachment_image_tag item, :image, :fill, 150, 150, format:'jpg' %></div>
+         <div>
+           <%= link_to item_path(item.id) do %>
+           <%= item.name %>
+           <% end %>
+         </div>
          <div><%= item.price %></div>
     </div>
     <% end %>
