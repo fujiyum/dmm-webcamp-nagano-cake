@@ -5,19 +5,17 @@ class OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-     if params[:order][:address_id] == "1"
+    binding.pry
+     if params[:order][:select_address_id] == "1"
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
        @order.name = current_customer.full_name
-     elsif params[:order][:address_id] == "2"
-       if Address.exists?(name: params[:order][:registered])
-         @order.postal_code = Address.find(params[:order][:registered]).postal_code
-         @order.address = Address.find(params[:order][:registered]).address
-         @order.name = Address.find(params[:order][:registered]).name
-       else
-         render :new
-       end
-     elsif params[:order][:address_id] == "3"
+     elsif params[:order][:select_address_id] == "2"
+         @address = Address.find(params[:order][:address_id])
+         @order.postal_code = @address.postal_code
+         @order.address = @address.address
+         @order.name = @address.name
+     elsif params[:order][:select_address_id] == "3"
        address_new = current_customer.addresses.new(address_params)
        if address_new.save
        else
@@ -58,7 +56,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :postal_code, :address)
+    params.require(:order).permit(:payment, :name, :postal_code, :address)
   end
 
   def address_params

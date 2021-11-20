@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-   <div class="col">
+   <div class="col-9">
     <table class="table table-hove mt-3">
       <thead class="table-warning bg-opacity-10">
        <tr>
@@ -30,26 +30,30 @@
       </tbody>
     </table>
    </div>
-  </div>
-   <div class="col">
+   <div class="col-3">
      <table class="table table-hove mt-3">
        <tbody>
          <tr>
            <th>送料</th><td><%= @order.postage_method %></td>
+         </tr>
+         <tr>
            <th>商品合計</th><td><%= @total_price %></td>
+         </tr>
+         <tr>
            <th>請求金額</th><td><%= @order.postage_method.to_i + @total_price.to_i %></td>
          </tr>
        </tbody>
      </table>
    </div>
+  </div>
    <div class="row">
     <div class="col">
-      <p><strong>支払方法</strong><%= @order.payment %><p>
+      <p><strong>支払方法</strong><%= @order.payment_i18n %><p>
     </div>
    </div>
    <div class="row">
     <div class="col">
-      <p><strong>お届け先</strong><%= @order.address %><p>
+      <p><strong>お届け先</strong><%= @order.postal_code %><%= @order.address %><%= @order.name %><p>
     </div>
    </div>
    <div class="row next-btn">
