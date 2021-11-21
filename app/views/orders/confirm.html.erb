@@ -61,7 +61,7 @@
      <%= form_with model: @order, url: orders_path, local: true do |f| %>
        <% f.hidden_field :total_price%>
        <% f.hidden_field :payment %>
-       <% f.hidden_field :full_address %>
+       <% f.hidden_field :address %>
        <%= f.submit '注文を確定', class:'btn btn-success' %>
      <% end %>
     </div>
