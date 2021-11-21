@@ -3,6 +3,25 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def create
+      cart_items = current_customer.cart_items.all
+      @order = current_customer.orders.new(order_params)
+      if @order.save!
+          cart_items.each do |cart|
+              order_detail = OrderDetail.new
+              order_detail.item_id = @order.id
+              order_detail.quantity = cart.amount
+              order_detail.tax_included_price = cart.item.price*1.1
+              order_detail.save
+          end
+          redirect_to order_thanks_path(@order.id)
+          cart_items.destroy_all
+      else
+          @order = Order.new(order_params)
+          render :new
+      end
+  end
+
   def confirm
     @order = Order.new(order_params)
      if params[:order][:select_address] == "1"
@@ -27,25 +46,6 @@ class OrdersController < ApplicationController
   def thanks
   end
 
-  def create
-      cart_items = current_customer.cart_items.all
-      @order = current_customer.orders.new(order_params)
-      if @order.save
-          cart_items.each do |cart|
-              order_detail = OrderDetail.new
-              order_detail.item_id = @order.id
-              order_detail.order_amount = cart.amount
-              order_detail.order_price = cart.item.price
-              order_detail.save
-          end
-          redirect_to order_thanks_path
-          cart_items.destroy_all
-      else
-          @order = Order.new(order_params)
-          render :new
-      end
-  end
-
   def index
   end
 
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment, :name, :postal_code, :address)
+    params.require(:order).permit(:customer_id, :payment, :name, :postal_code, :address, :total_price)
   end
 
 end
