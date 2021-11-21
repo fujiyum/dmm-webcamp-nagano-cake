@@ -1,28 +1,29 @@
 <div class="container mt-3">
  <div class="row">
   <div class="pull-left"><h4>注文履歴一覧</h4></div>
-  <table class="table table-hove">
-    <thead class="table-warning bg-opacity-10">
-     <tr>
+   <table class="table table-hove">
+     <thead class="table-warning bg-opacity-10">
+       <tr>
          <th>購入日時</th>
          <th>購入者</th>
          <th>注文個数</th>
          <th>注文ステータス</th>
-     </tr>
-    </thead>
-    <tbody>
-    <% @orders.each do |order| %>
-     <tr>
+       </tr>
+     </thead>
+     <tbody>
+      <% @orders.each do |order| %>
+       <tr>
          <td>
-           <%= link_to order[:cerated_at].strftime("%Y-%m-%d %H:%M"), admin_order_path(order.id) do %>
+           <%= link_to admin_order_path(order.id) do %>
+           <%= l order.created_at %>
            <% end %>
          </td>
          <td><%= order.customer.full_name %></td>
-         <td><%= order.items.sum(:quantity) %></td>
+         <td><%= order.order_details.sum(:quantity) %></td>
          <td><%= order.status %></td>
-     </tr>
-    <% end %>
-    </tboby>
- </table>
-</div>
+       </tr>
+      <% end %>
+     </tboby>
+   </table>
+ </div>
 </div>
