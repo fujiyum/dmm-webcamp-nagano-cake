@@ -22,7 +22,7 @@
            <%= item.name %>
            <% end %>
          </div>
-         <div><%= item.price %></div>
+         <div><%= item.price.to_s(:delimited) %></div>
     </div>
     <% end %>
   </div>

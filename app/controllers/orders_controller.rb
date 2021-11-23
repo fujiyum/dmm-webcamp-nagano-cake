@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
       if @order.save
           cart_items.each do |cart|
               order_detail = OrderDetail.new
-              order_detail.item_id = @order.id
+              order_detail.order_id = @order.id
+              order_detail.item_id = cart.item_id
               order_detail.quantity = cart.amount
               order_detail.tax_included_price = cart.item.price*1.08
               order_detail.save
@@ -41,12 +42,14 @@ class OrdersController < ApplicationController
        end
      end
      @cart_items = current_customer.cart_items.all
+     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def thanks
   end
 
   def index
+    @orders = Order.all.includes(:order_details)
   end
 
   def show
