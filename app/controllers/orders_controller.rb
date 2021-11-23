@@ -49,16 +49,22 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all.includes(:order_details)
+    @orders = current_customer.orders.page(params[:page]).reverse_order.includes(:order_details)
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private
 
   def order_params
     params.require(:order).permit(:customer_id, :payment, :name, :postal_code, :address, :total_price)
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(:order_id, :item_id, :quantity, :tax_included_price, :making_status)
   end
 
 end
