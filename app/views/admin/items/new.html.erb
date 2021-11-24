@@ -1,41 +1,49 @@
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>
+  <%= @item.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h4>商品新規登録</h4>
+      <h4 class="mb-5">商品新規登録</h4>
       <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
-      <div class="form-grouop mb-3">
-        <label for="item_image" class="form-label">商品画像</label>
-        <div><%= f.attachment_field :image %></div>
-      </div>
-      <div class="form-grouop mb-3">
-        <label for="item_name" class="for-label">商品名</label>
-        <div><%= f.text_field :name, class:'form-control' %></div>
-      </div>
-      <div class="form-grouop mb-3">
-        <label for="item_introduction" class="for-label">商品説明</label>
-        <div><%= f.text_area :introduction, class:'form-control' %></div>
-      </div>
-      <div class="from-grouop mb-3">
-        <label for="item_genre" class="for-label">ジャンル</label>
-        <div><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "選択して下さい" %></div>
-      </div>
-      <div class="form-grouop mb-3">
-        <label for="item_price" class="for-label">税抜価格</label>
-        <div><%= f.text_field :price %> 円</div>
-      </div>
-      <div class="from-grouop mb-3">
-        <label for="item_name" class="for-label">販売ステータス</label>
-       <div>
-        <%= f.radio_button :is_active, "true" %>
-        <%= f.label :is_active, "販売中" %>
-        <%= f.radio_button :is_active, "false" %>
-        <%= f.label :is_active, "販売停止中" %>
-       </div>
-      </div>
-      <div class="form-grouop mb-3">
-      <%= f.submit '新規登録', class:'btn btn-success' %>
+      <table>
+        <tbody>
+          <tr>
+            <th>商品画像</th><td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <th>商品名</th><td><%= f.text_field :name, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th><td><%= f.text_area :introduction, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th><td><%= f.collection_select( :genre_id, Genre.all, :id, :name, {prompt: "選択して下さい"}, {class:'form-control'}) %></td>
+          </tr>
+          <tr>
+            <th>税抜価格</th><td><%= f.text_field :price, class:'form-control' %> 円</td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <%= f.radio_button :is_active, "true" %>
+              <%= f.label :is_active, "販売中" %>
+              <%= f.radio_button :is_active, "false" %>
+              <%= f.label :is_active, "販売停止中" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <div class="col text-center mt-3">
+          <%= f.submit '新規登録', class:'btn btn-success' %>
+        </div>
       </div>
      <% end %>
     </div>
- </div>
+  </div>
 </div>
