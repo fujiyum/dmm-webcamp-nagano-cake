@@ -4,16 +4,16 @@
 　　　<%= image_tag 'logo._image1.PNG', class:'img-fluid' %>
 　　　<div class="card-img-overlay text-center text-light">
 　　　  <p class="main-text">
-　　　  小さな町のレトロなお店。</br>
-　　　  創業より変わらないケーキは、</br>
-　　　  地元の皆様に愛され続けております。</br>
-　　　  ちょっと懐かしい味を全国の皆様にもぜひ。</br>
-　　　  会員登録ののち、ご注文お待ちしております。</p>
+　　　  ようこそ、ナガノCAKEへ！</br>
+　　　  このサイトは、ケーキ販売のECサイトになります。</br>
+　　　  会員でない方も商品の閲覧はできますが、</br>
+　　　  購入には会員登録が必要になります。</p>
 　　　</div>
     </div>
   </div>
 
   <div class="row">
+    <h3>新着商品</h3>
     <% @item.each do |item| %>
     <div class="col mx-auto">
          <div><%= attachment_image_tag item, :image, :fill, 150, 150, format:'jpg' %></div>
