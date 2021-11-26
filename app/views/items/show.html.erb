@@ -16,13 +16,13 @@
           <th class="h4">￥<%= @item.with_tax_price.to_s(:delimited) %>  <span class="h6">(税込)</span></th>
          </tr>
          <tr>
-         <% if customer_signed_in? %>
+         <%# if customer_signed_in? %>
           <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <th><%= f.select :amount, *[1..10], {include_blank: '個数選択' }, { class:'form-control', required: true } %></th>
             <td><%= f.submit "カートに入れる", class:'btn btn-success' %></td>
           <% end %>
-         <% end %>
+         <%#end %>
          </tr>
        </tbody>
      </table>

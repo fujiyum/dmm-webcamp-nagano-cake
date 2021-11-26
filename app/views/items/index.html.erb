@@ -1,5 +1,5 @@
 <div class="container mt-3">
- <h4 class="mb-5">商品一覧</h4>
+ <h4 class="mb-5">商品一覧<small class="text-muted">(全<%= @item_count %>件)</small></h4>
   <div class="row mx-auto">
     <% @items.each do |item| %>
       <div class="col-lg-4 mb-3">

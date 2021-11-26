@@ -1,8 +1,12 @@
 class CartItemsController < ApplicationController
-  
-  
+  before_action :authenticate_customer!
+
   def index
-    @cart_items = current_customer.cart_items
+    #if customer_signed_in?
+     @cart_items = current_customer.cart_items
+   # else
+   #  redirect_to new_customer_session_path
+   # end
   end
 
   def update#数量の変更
