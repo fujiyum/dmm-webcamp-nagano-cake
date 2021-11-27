@@ -16,16 +16,21 @@
           <th class="h4">￥<%= @item.with_tax_price.to_s(:delimited) %>  <span class="h6">(税込)</span></th>
          </tr>
          <tr>
-         <%# if customer_signed_in? %>
+          <th>
           <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
-            <th><%= f.select :amount, *[1..10], {include_blank: '個数選択' }, { class:'form-control', required: true } %></th>
-            <td><%= f.submit "カートに入れる", class:'btn btn-success' %></td>
+            <%= f.select :amount, *[1..10], {include_blank: '個数選択' }, { class:'form-control mb-3 col-sm-8 col-lg-5'} %>
+            <%= f.submit "カートに入れる", class:'btn btn-success form-control col-sm-8 col-lg-5' %></td>
           <% end %>
-         <%#end %>
+          </th>
          </tr>
        </tbody>
      </table>
+     <div class="row">
+         <div class="col">
+
+         </div>
+     </div>
    </div>
   </div>
 </div>

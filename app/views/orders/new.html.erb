@@ -5,10 +5,10 @@
      <div class="payment">
        <h4><strong>支払方法</strong></h4>
         <%= f.radio_button :payment, Order.payments.key(0) %>
-        <%#= f.label :payment, Order.payments_i18n[:credit_card] %>
+        <%= f.label :payment, Order.payments_i18n[:credit_card] %>
         <br>
         <%= f.radio_button :payment, Order.payments.key(1) %>
-        <%#= f.label :payment, Order.payments_i18n[:bank] %>
+        <%= f.label :payment, Order.payments_i18n[:bank] %>
      </div>
      <div class="address">
        <h4><strong>お届け先</strong></h4>
