@@ -58,16 +58,17 @@
          <td></td>
          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %></td>
         </tr>
+        <tr>
+         <th></th>
+         <td></td>
+         <td>
+           <%= f.submit "新規登録", class:'btn btn-success' %>
+         </td>
+        </tr>
        </tbody>
       </table>
+      <% end %>
   </div>
- </div>
-
- <div class="row">
-   <div class="col text-center mt-3 mx-auto">
-    <%= f.submit "新規登録", class:'btn btn-success w-25' %>
-    <% end %>
-   </div>
  </div>
 
   <div class="row">

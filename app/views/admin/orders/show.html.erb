@@ -60,7 +60,7 @@
 	<table class="table table-bordered">
 		<tr>
 			<th style="width:30%;">商品合計</th>
-			<td><%= @order.total_price.to_s(:delimited) %>円</td>
+			<td><%= (@order.total_price.to_i).to_s(:delimited) %>円</td>
 		</tr>
 		<tr>
 			<th style="width:30%;">配送料</th>
