@@ -1,19 +1,13 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_customer
 
- def top
-   if params[:customer_id] == @customer.ids
-    @orders = @customer.orders.all
-   else
-    @orders = Order.all
-   end
- end
-
- private
-
- def set_customer
-   @customer = Customer.all
- end
+def top
+  if params[:customer_id].blank?
+     @orders = Order.all
+  else
+     @customer = Customer.find(params[:customer_id])
+     @orders = @customer.orders
+  end
+end
 
 end
