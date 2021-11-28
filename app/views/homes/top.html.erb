@@ -1,29 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col mx-auto ">
-　　　<%= image_tag 'logo._image1.PNG', class:'img-fluid' %>
-　　　<div class="card-img-overlay text-center text-light">
-　　　  <p class="main-text">
-　　　  ようこそ、ナガノCAKEへ！</br>
-　　　  このサイトは、ケーキ販売のECサイトになります。</br>
-　　　  会員でない方も商品の閲覧はできますが、</br>
-　　　  購入には会員登録が必要になります。</p>
-　　　</div>
-    </div>
+    <div class="main-text col d-flex align-items-center mt-3">
+　　  <p><strong>
+　　  ようこそ、ナガノCAKEへ！</br>
+　　  このサイトは、ケーキ販売のECサイトになります。</br>
+　　  会員でない方も商品の閲覧はできますが、</br>
+　　  購入には会員登録が必要になります。</strong></p>
+　  </div>
+    <div class="col px-0">
+　　　<%= image_tag 'top_image.PNG', class:'img-fluid' %>
+　　</div>
   </div>
 
-  <div class="row">
-    <h3>新着商品</h3>
+  <h3>新着商品</h3>
+  <div class="row item">
     <% @item.each do |item| %>
-    <div class="col mx-auto">
-         <div><%= attachment_image_tag item, :image, :fill, 150, 150, format:'jpg' %></div>
-         <div>
-           <%= link_to item_path(item.id) do %>
-           <%= item.name %>
-           <% end %>
-         </div>
-         <div><%= item.price.to_s(:delimited) %></div>
+    <div class="col text-center mt-3">
+      <div class="item_image">
+        <%= attachment_image_tag item, :image, :fill, 200, 200, format:'jpg', class:'border border-light rounded-top' %>
+      </div>
+      <div class="item_name">
+        <%= link_to item_path(item.id) do %>
+        <%= item.name %>
+        <% end %>
+      </div>
+      <div class="item_price">¥ <%= item.price.to_s(:delimited) %></div>
     </div>
     <% end %>
+  </div>
+
+  <div class="row link">
+   <div class="col text-right mt-3">
+     <p><%= link_to '全ての商品を見る ＞', items_path %></p>
+   </div>
   </div>
 </div>
