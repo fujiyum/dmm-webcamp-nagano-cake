@@ -1,17 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="main-text col d-flex align-items-center mt-3">
-　　  <p><strong>
-　　  ようこそ、ナガノCAKEへ！</br>
-　　  このサイトは、ケーキ販売のECサイトになります。</br>
-　　  会員でない方も商品の閲覧はできますが、</br>
-　　  購入には会員登録が必要になります。</strong></p>
-　  </div>
-    <div class="col px-0">
-　　　<%= image_tag 'top_image.PNG', class:'img-fluid' %>
-　　</div>
-  </div>
+<div class="jumbotron jumbotron-extend">
+  <div class="container-fluid jumbotron-container">
+　　  <p class="info"><strong>ようこそ、ナガノCAKEへ！</strong></p>
+　　  <p class="info"><strong>このサイトは、ケーキ販売のECサイトになります。</strong></p>
+　　  <p class="info"><strong>会員でない方も商品の閲覧はできますが、</strong></p>
+　　  <p class="info"><strong>購入には会員登録が必要になります。</strong></p>
+　</div>
+</div>
 
+
+<div class="container-fluid">
   <h3>新着商品</h3>
   <div class="row item">
     <% @item.each do |item| %>

@@ -2,6 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-text{
-  background: linear-gradient(180deg, #fff 50%, #eee 50%);
+.jumbotron-extend {
+    position: relative;
+    min-height: 300px;
+    height: 100vh;
+    background-image: url(main_image2.PNG);
+    background-size: cover;
+}
+
+.jumbotron-container {
+    position: relative;
+    top: 70%;
+    transform: translateY(-50%);
+    color: #000;
+    -webkit-text-stroke: 1px #FFF;
+    text-stroke: 1px #FFF;
+}
+
+@media (max-width: 767px){
+    .jumbotron-extend{
+        height: 300px;
+        min-height: 0;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .jumbotron-container{
+        top: 0;
+        transform: translateY(0);
+    }
+    .info{
+
+    }
 }
