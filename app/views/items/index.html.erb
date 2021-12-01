@@ -1,14 +1,14 @@
 <div class="container mt-3">
- <h4 class="mb-5">商品一覧<small class="text-muted">(全<%= @item_count %>件)</small></h4>
-  <div class="row mx-auto">
+ <h4 class="mb-5">ALL LINEUP<small class="text-muted">(全<%= @item_count %>件)</small></h4>
+  <div class="row mx-auto text-center">
     <% @items.each do |item| %>
       <div class="col-lg-4 mb-3">
         <%= link_to item_path(item.id) do %>
-        <%= attachment_image_tag item, :image, :fill, 150, 150, format:'jpg' %>
+        <%= attachment_image_tag item, :image, :fill, 150, 150, format:'jpg', class:'border border-light rounded-top'%>
         <% end %>
         <br>
         <%= item.name %><br>
-        <%= item.price.to_s(:delimited) %>
+        ¥ <%= item.price.to_s(:delimited) %>
       </div>
     <% end %>
   </div>
