@@ -4,6 +4,12 @@ ja:
       payment:
         credit_card: 'クレジットカード'
         bank: '銀行振込'
+    order_detail:
+      making_status:
+        start: '着手不可'
+        wait: '製作待ち'
+        make: '製作中'
+        completed: '製作完了'
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

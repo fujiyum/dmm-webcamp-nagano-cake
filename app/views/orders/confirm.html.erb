@@ -22,7 +22,7 @@
           <td><%= cart.item.name %></td>
           <td><%= cart.item.with_tax_price.to_s(:delimited) %></td>
           <td><%= cart.amount %></td>
-          <td><%=  cart.subtotal.to_s(:delimited) %></td>
+          <td><%= cart.subtotal.to_s(:delimited) %></td>
          </tr>
         <% end %>
       </tbody>

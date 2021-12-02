@@ -1,5 +1,4 @@
-<div class="row" style="width:60%; margin:0 auto;">
-<%= form_with model:@order, url:admin_order_detail_path(@order.id), method: :patch do |f| %>
+<div class="row" style="width:80%; margin:0 auto;">
 <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文詳細画面</h4>
   <table class="table table-bordered">
 	<tr>
@@ -30,7 +29,10 @@
 	<tr>
 		<th>注文ステータス</th>
 		<td>
+			<%#= form_with model:@order, url:admin_order_detail_path(@order.id), method: :patch do |f| %>
 			<%#= f.select :status, Order.statuses.keys.map{ |k| k } %>
+			<%#= f.submit '更新', class:'btn btn-success' %>
+			<%# end %>
 		</td>
 	</tr>
 	</table>
@@ -41,7 +43,7 @@
 			<th>単価(税込)</th>
 			<th>数量</th>
 			<th>小計</th>
-			<th>制作ステータス</th>
+			<th>製作ステータス</th>
 		</tr>
 
 
@@ -51,7 +53,13 @@
 			<td><%= order_detail.tax_included_price.to_s(:delimited) %>円</td>
 			<td><%= order_detail.quantity %></td>
 			<td><%= (order_detail.tax_included_price*order_detail.quantity).to_s(:delimited) %>円</td>
-			<td>
+			<td nowarp>
+				<%= form_with model: @order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+			  <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, class:'form-control'%>
+        <%= f.hidden_field :order_id %>
+			  <%= f.hidden_field :item_id %>
+			  <%= f.submit '更新', class:"btn btn-success" %>
+			  <% end %>
 			</td>
 		</tr>
 <% end %>
@@ -71,9 +79,4 @@
 			<td><%= (@order.total_price.to_i + @order.postage_method.to_i).to_s(:delimited) %>円</td>
 		</tr>
 	</table>
-	<hr>
-	<div class="text-center">
-		<%= f.submit '更新する', class:"btn btn-success" %>
-	</div>
-<% end %>
 </div>
