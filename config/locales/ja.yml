@@ -4,6 +4,12 @@ ja:
       payment:
         credit_card: 'クレジットカード'
         bank: '銀行振込'
+      status:
+        waiting: '入金待ち'
+        confirmation: '入金確認'
+        production: '製作中'
+        ready: '発送準備中'
+        sent: '発送済み'
     order_detail:
       making_status:
         start: '着手不可'
