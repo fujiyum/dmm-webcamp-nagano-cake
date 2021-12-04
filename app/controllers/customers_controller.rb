@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(params[:id])
-    @customer.update(is_active: false) #false=退会に変更する
+    @customer.update(is_active: "退会") #false=退会に変更する
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用お待ちしております。"
     redirect_to homes_path

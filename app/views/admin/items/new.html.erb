@@ -7,24 +7,34 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h4 class="mb-5">商品新規登録</h4>
+      <h4 class="mb-5" style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">商品新規登録</h4>
       <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
       <table>
         <tbody>
           <tr>
-            <th>商品画像</th><td><%= f.attachment_field :image %></td>
+            <th>商品画像</th>
+            <td><%= f.attachment_field :image %></td>
+            <td></td>
           </tr>
           <tr>
-            <th>商品名</th><td><%= f.text_field :name, class:'form-control' %></td>
+            <th>商品名</th>
+            <td><%= f.text_field :name, class:'form-control' %></td>
+            <td></td>
           </tr>
           <tr>
-            <th>商品説明</th><td><%= f.text_area :introduction, class:'form-control' %></td>
+            <th>商品説明</th>
+            <td><%= f.text_area :introduction, class:'form-control' %></td>
+            <td></td>
           </tr>
           <tr>
-            <th>ジャンル</th><td><%= f.collection_select( :genre_id, Genre.all, :id, :name, {prompt: "選択して下さい"}, {class:'form-control'}) %></td>
+            <th>ジャンル</th>
+            <td><%= f.collection_select( :genre_id, Genre.all, :id, :name, {prompt: "選択して下さい"}, {class:'form-control'}) %></td>
+            <td></td>
           </tr>
           <tr>
-            <th>税抜価格</th><td><%= f.text_field :price, class:'form-control' %> 円</td>
+            <th>税抜価格</th>
+            <td><%= f.text_field :price, class:'form-control' %></td>
+            <td>円</td>
           </tr>
           <tr>
             <th>販売ステータス</th>
@@ -34,6 +44,7 @@
               <%= f.radio_button :is_active, "f販売停止中" %>
               <%= f.label :is_active, "販売停止中" %>
             </td>
+            <td></td>
           </tr>
         </tbody>
       </table>
