@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row mx-auto">
     <div class="col pull-left">
-     <h4>注文情報確認</h4>
+     <h4style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文情報確認</h4>
     </div>
   </div>
   <div class="row">
@@ -35,7 +35,7 @@
            <th>送料</th><td><%= @order.postage_method %></td>
          </tr>
          <tr>
-           <th>商品合計</th><td><%= @total_price.to_s(:delimited) %></td>
+           <th>商品合計</th><td><%= (@total_price.to_i).to_s(:delimited) %></td>
          </tr>
          <tr>
            <th>請求金額</th><td><%= (@order.postage_method.to_i + @total_price.to_i).to_s(:delimited) %></td>
