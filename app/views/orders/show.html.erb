@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row mx-auto">
     <div class="col pull-left">
-     <h4>注文情報</h4>
+     <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文情報</h4>
     </div>
   </div>
   <div class="row">
@@ -18,13 +18,13 @@
             <th>支払方法</th><td><%= @order.payment_i18n %>
          </tr>
          <tr>
-            <th>ステータス</th><td></td>
+            <th nowarp>ステータス</th><td><%= @order.status_i18n %></td>
          </tr>
       </tbody>
     </table>
    </div>
    <div class="col">
-     <h4>請求情報</h4>
+     <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">請求情報</h4>
      <table class="table table-bordered">
        <tbody>
          <tr>
@@ -42,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <h4>注文内容</h4>
+      <h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文内容</h4>
       <table class="table table=bordered">
         <thead>
           <tr>
