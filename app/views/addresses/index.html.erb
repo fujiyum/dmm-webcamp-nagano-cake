@@ -3,27 +3,26 @@
   <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
    <h4 class="mb-4" style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先登録/一覧</h4>
    <%= form_with model: @address, local:true do |f| %>
-    <div class="form-group">
-     <div class="input-group align-items-center">
-      <label>郵便番号(ハイフンなし)</label>
-       <%= f.text_field :postal_code, class:'form-control ml-3' %>
-     </div>
-    </div>
-    <div class="form-group">
-     <div class="input-group align-items-center">
-      <label>住所</label>
-       <%= f.text_field :address, class:'form-control ml-3' %>
-     </div>
-    </div>
-    <div class="form-group">
-     <div class="input-group align-items-center">
-      <label>宛名</label>
-       <%= f.text_field :name, class:'form-control ml-3' %>
-     </div>
-    </div>
-    <div class="text-center">
-      <%= f.submit '新規登録', class:'btn btn-success' %>
-    </div>
+    <table>
+     <tbody>
+      <tr>
+        <th>郵便番号（ハイフンなし）</th>
+        <td scope="col" style="width: 50;"><%= f.text_field :postal_code, class:'form-control ml-3' %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td scope="col" style="width: 60%;"><%= f.text_field :address, class:'form-control ml-3' %></td>
+      </tr>
+      <tr>
+        <th>宛名</th>
+        <td scope="col" style="width: 50%;"><%= f.text_field :name, class:'form-control ml-3' %></td>
+      </tr>
+      <tr>
+       <th></th>
+       <td><%= f.submit '新規登録', class:'btn btn-success' %></td>
+      </tr>
+     </tbody>
+    </table>
    <% end %>
 
    <table class="table table-bordered mt-5">
@@ -42,7 +41,7 @@
          <td><%= address.address %></td>
          <td><%= address.name %></td>
          <td><%= link_to '編集する', edit_address_path(address.id), class:'btn btn-success' %>
-             <%= link_to '削除する', address_path(address.id), method: :delete, class:'btn btn-danger' %>
+             <%= link_to '削除する', address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:'btn btn-danger' %>
          </td>
        </tr>
        <% end %>

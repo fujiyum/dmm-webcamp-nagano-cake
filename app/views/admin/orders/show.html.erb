@@ -55,7 +55,7 @@
 			<td><%= (order_detail.tax_included_price*order_detail.quantity).to_s(:delimited) %>円</td>
 			<td nowarp>
 			  <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
-			  <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, class:'form-control'%>
+			  <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, {class:'form-control'} %>
 			  <%= f.submit '更新', class:"btn btn-success" %>
 			  <% end %>
 			</td>
