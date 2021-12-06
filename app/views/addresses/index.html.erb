@@ -1,21 +1,21 @@
 <div class="container mt-5">
  <div class="row">
   <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
-   <h4 class="mb-4" style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先登録/一覧</h4>
+   <h4 class="page-title">配送先登録/一覧</h4>
    <%= form_with model: @address, local:true do |f| %>
     <table>
      <tbody>
       <tr>
         <th>郵便番号（ハイフンなし）</th>
-        <td scope="col" style="width: 50;"><%= f.text_field :postal_code, class:'form-control ml-3' %></td>
+        <td><%= f.text_field :postal_code, class:'form-control ml-3' %></td>
       </tr>
       <tr>
         <th>住所</th>
-        <td scope="col" style="width: 60%;"><%= f.text_field :address, class:'form-control ml-3' %></td>
+        <td class="address-col"><%= f.text_field :address, class:'form-control ml-3' %></td>
       </tr>
       <tr>
         <th>宛名</th>
-        <td scope="col" style="width: 50%;"><%= f.text_field :name, class:'form-control ml-3' %></td>
+        <td><%= f.text_field :name, class:'form-control ml-3' %></td>
       </tr>
       <tr>
        <th></th>
